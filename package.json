@@ -1,5 +1,5 @@
 {
-  "name": "i5ting_toc",
+  "name": "codingyu_toc",
   "version": "1.1.5",
   "description": "tocmd.npm:a npm wrapper of i5ting_ztree_toc",
   "keywords": [
@@ -19,16 +19,16 @@
   },
   "preferGlobal": "true",
   "bin": {
-    "i5ting_toc": "bin/tocmd.js"
+    "codingyu_toc": "bin/tocmd.js"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/i5ting/tocmd.npm.git"
+    "url": "https://github.com/codingyu/tocmd.npm"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/i5ting/tocmd.npm/issues"
+    "url": "https://github.com/codingyu/tocmd.npm/issues"
   },
   "dependencies": {
     "bufferhelper": "^0.2.0",
@@ -45,5 +45,5 @@
     "gulp-watch": "^0.7.0",
     "mocha": "*"
   },
-  "homepage": "https://github.com/i5ting/tocmd.npm"
+  "homepage": "https://github.com/codingyu/tocmd.npm"
 }
