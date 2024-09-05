@@ -8,9 +8,13 @@ var BufferHelper = require('bufferhelper')
 var Handlebars = require('handlebars')
 var open = require("open")
 
-function generator(pwd, source_file_name, dest_file_path, is_open, options) {
+function generator(pwd, source_file_name, dest_file_path, is_open, options, extend) {
 	var file_name = source_file_name.split('/').pop()
 	var _file_name = file_name.split('.')[0]
+
+	if (extend.title) {
+		_file_name = extend.title
+	}
 
 	var is_debug = options.debug
 	function log(str) {
@@ -18,14 +22,14 @@ function generator(pwd, source_file_name, dest_file_path, is_open, options) {
 			console.log(str)
 	}
 
-	// 点号表示当前文件所在路径  
+	// 点号表示当前文件所在路径
 	var str = fs.realpathSync('.')
 	log(str)
 
 	//函数可以返回当前正在执行的项目路径
 	var pwd = pwd
-	//:属性返回的是  nodejs 的安装路径 
-	// processor.execPath 
+	//:属性返回的是  nodejs 的安装路径
+	// processor.execPath
 
 	var preview_path = pwd + '/preview'
 
@@ -86,9 +90,9 @@ function generator(pwd, source_file_name, dest_file_path, is_open, options) {
 				}
 				log(data)
 
-				var css_link = "ddsds"
 				var data1 = {
-					"title": "i5ting_ztree_toc:" + _file_name,
+					"title": _file_name,
+					"root_menu_name": extend.root_menu_name || "Table of Content",
 					"parse_markdown": data
 				}
 

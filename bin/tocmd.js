@@ -17,11 +17,14 @@ program
 	.option('-f, --file [filename]', ' default is README.md ')
 	.option('-o, --open', 'open in browser')
 	.option('-v, --verbose', '打印详细日志')
+	.option('-T, --title [title]', 'HTML title')
+	.option('-M, --root_menu_name [root_menu_name]', 'root node name')
 	.parse(process.argv)
 
 var pwd = process.cwd()
 var filename = "README.md"
 var is_open = false
+var extend = {}
 
 if (program.file) {
 	filename = program.file
@@ -42,6 +45,13 @@ function log(str) {
 		console.log(str)
 	}
 }
+if (program.title) {
+	extend.title = program.title
+}
+
+if (program.root_menu_name) {
+	extend.root_menu_name = program.root_menu_name
+}
 
 log('filename = ' + filename)
 log('verbose = ' + verbose)
@@ -59,10 +69,11 @@ var _file_name = file_name.split('.')[0]
 if (file_name.indexOf('\\') > 0) {
 	_file_name = file_name.substring(file_name.lastIndexOf("\\")).split('.')[0]
 }
-var dest_file_path = pwd + '/preview/' + _file_name + '.html'
+// var dest_file_path = pwd + '/preview/' + _file_name + '.html'
+var dest_file_path = pwd + '/preview/index.html'
 
 console.log('pwd=' + pwd)
 console.log('source_file_name=' + source_file_name)
 console.log('dest_file_path=' + dest_file_path)
 
-require('../index')(pwd, source_file_name, dest_file_path, is_open, markd_config)
+require('../index')(pwd, source_file_name, dest_file_path, is_open, markd_config, extend)
